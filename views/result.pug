@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        title 统计结果
+        meta(charset="utf8")
+        meta(name="theme-color",content="#F44336")
+        meta(name="viewport",content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet",href="./stylesheets/site.css")
+        link(rel="stylesheet",href="./stylesheets/material.red-indigo.min.css")
+    body
+        .mdl-card.mdl-shadow--2dp
+            .mdl-card__title
+                h2.mdl-card__title-text 统计结果
+            .mdl-card__supporting-text
+                ul.mdl-list
+                    each group in groups
+                        li.mdl-list__item.mdl-list__item--two-line
+                            span.mdl-list__item-primary-content
+                                span= group.time
+                                span.mdl-list__item-sub-title
+                                    span.bar(style=`width: ${group.count * 5}px`)= group.count

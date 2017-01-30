@@ -1,0 +1,41 @@
+doctype html
+html
+    head
+        title 聚会调查
+        meta(charset="utf8")
+        meta(name="theme-color",content="#F44336")
+        meta(name="viewport",content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet",href="./stylesheets/site.css")
+        link(rel="stylesheet",href="./stylesheets/material.red-indigo.min.css")
+    body
+        a.mdl-button.mdl-js-button.mdl-button--primary.mdl-js-ripple-effect(href="./result") 查看结果
+        .mdl-card.mdl-shadow--2dp
+            .mdl-card__title
+                h2.mdl-card__title-text 聚会安排在什么时间你能参加
+            .mdl-card__supporting-text
+                each time, index in timeCollection
+                    if (index % 4 === 0)
+                        .divider
+                    label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for=`checkbox${index}`)
+                        if username && selection.indexOf(time) !== -1
+                            input.mdl-checkbox__input(id=`checkbox${index}`,type="checkbox",value=time,checked)
+                        else
+                            input.mdl-checkbox__input(id=`checkbox${index}`,type="checkbox",value=time)
+                        span.mdl-checkbox__label= time
+        .mdl-card.mdl-shadow--2dp
+            .mdl-card__title
+                h2.mdl-card__title-text 你的名字是
+            .mdl-card__supporting-text
+                .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                    if username
+                        input.mdl-textfield__input#name(type="text",value=username)
+                    else
+                        input.mdl-textfield__input#name(type="text")
+                    label.mdl-textfield__label(for="name") 姓名
+        button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored.mdl-js-ripple-effect 提交
+        .mdl-snackbar.mdl-js-snackbar
+            .mdl-snackbar__text
+            button.mdl-snackbar__action(type="button")
+        script(defer src="./javascripts/material.min.js")
+        script(defer src="./javascripts/jquery.min.js")
+        script(defer src="./javascripts/site.js")
